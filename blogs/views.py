@@ -9,3 +9,10 @@ def posts_by_category(req, category_id):
         'category': category
     }
     return render(req, 'posts_by_category.html', context)
+
+def blog_content(req, slug):
+    blog = get_object_or_404(Blog, slug=slug, status='Published')
+    context = {
+        'blog' : blog
+    }
+    return render(req, 'blog-content.html', context)
